@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { backendUrl, currency } from '../App'
+import { currency } from '../App'
 import { toast } from 'react-toastify'
 
 const ListProduct = ({token}) => {
@@ -9,7 +9,7 @@ const ListProduct = ({token}) => {
 
   const fetchList = async() =>{
     try{
-      const response = await axios.get(backendUrl + '/api/product/list')
+      const response = await axios.get(`https://mern-ecom-backend-production.up.railway.app/api/product/list`)
       if(response.data.success){
         setList(response.data.products)
       }else {
@@ -24,7 +24,7 @@ const ListProduct = ({token}) => {
 
   const removeProduct = async(id)=>{
     try{
-      const response = await axios.post(backendUrl + `/api/product/remove`, {id}, { headers: { token } })
+      const response = await axios.post(`https://mern-ecom-backend-production.up.railway.app/api/product/remove`, {id}, { headers: { token } })
       if(response.data.success){
         toast.success(response.data.message)
         await fetchList()

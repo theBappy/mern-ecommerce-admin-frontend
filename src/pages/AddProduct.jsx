@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { assets } from "../assets/assets";
 import axios from "axios";
-import { backendUrl } from "../App";
 import { toast } from "react-toastify";
 
 const AddProduct = ({ token }) => {
@@ -38,7 +37,7 @@ const AddProduct = ({ token }) => {
       image4 && formData.append("image4", image4);
 
       const response = await axios.post(
-        backendUrl + `/api/product/add`,
+        `https://mern-ecom-backend-production.up.railway.app/api/product/add`,
         formData,
         { headers: { token } }
       );

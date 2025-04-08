@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { backendUrl } from '../App'
+
 import { toast } from 'react-toastify';
 
 const Login = ({ setToken }) => {
@@ -12,7 +12,7 @@ const Login = ({ setToken }) => {
    const onSubmitHandler = async(e)=>{
     try{
         e.preventDefault()
-        const response = await axios.post(backendUrl+`/api/user/admin`, {email,password})
+        const response = await axios.post(`https://mern-ecom-backend-production.up.railway.app/api/user/admin`, {email,password})
         if(response.data.success){
             setToken(response.data.token)
         }
